@@ -1,134 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Box Layout</title>
-<style>
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #e9e7e7;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Box Layout</title>
+  <style>
+    body {
+      /* display: flex;
+      justify-content: center;
+      align-items: center; */
+      height: 100vh;
+      margin: 0;
+      background-color: #e9e7e7;
+    }
 
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: nowrap
-  }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: nowrap
+    }
 
-  .box1 {
-    width: 200px;
-    height: 170px;
-    background-color: #ccc;
-    border: 1px solid #14075a;
-    margin: 0 10px;
-    margin-top: 200px;
-    border-radius: 20px;
-  }
+    .box1 {
+      width: 200px;
+      height: 170px;
+      background-color: #ccc;
+      border: 1px solid #14075a;
+      margin: 0 10px;
+      margin-top: 200px;
+      border-radius: 20px;
+    }
 
-  .big-box2 {
-    width: 400px;
-    height: 400px;
-    background-color: #ccc;
-    border: 1px solid #14075a;
-    margin: 0 10px;
-    margin-top: 200px;
-    border-radius: 20px;
-    
-  }
+    .big-box2 {
+      width: 400px;
+      height: 400px;
+      background-color: #ccc;
+      border: 1px solid #14075a;
+      margin: 0 10px;
+      margin-top: 200px;
+      border-radius: 20px;
 
-  .box3 {
-    width: 200px;
-    height: 170px;
-    background-color: #ccc;
-    border: 1px solid #14075a;
-    margin: 0 10px;
-    margin-top: 200px;
-    border-radius: 20px;
-  }
+    }
 
-  .top-center-box {
-    width: 200px;
-    height: 170px;
-    background-color: #ccc;
-    border: 1px solid #14075a;
-    position: absolute;
-    top: 20px;
-    left: 63%;
-    transform: translateX(-50%);
-    border-radius: 20px;
-  }
-  div.res {
-    padding: 10px;
-    text-align: center;
-}
-.wrapper {
-  padding: 20px;
-  text-align: center;
-  line-height: 2px,
-  
-  
-}
-h1  {
-  color: #14075a;
-  
-}
-h3{
-  background-color: #14075a ;
-  color: #f9f9fa;
-  border-radius: 35px;
-  padding: 5px;
-}
-.big-box2 h1{
-  text-align: center;
-}
+    .box3 {
+      width: 200px;
+      height: 170px;
+      background-color: #ccc;
+      border: 1px solid #14075a;
+      margin: 0 10px;
+      margin-top: 200px;
+      border-radius: 20px;
+    }
 
-</style>
+    .top-center-box {
+      width: 200px;
+      height: 170px;
+      background-color: #ccc;
+      border: 1px solid #14075a;
+      position: absolute;
+      top: 75px;
+      left: 59%;
+      transform: translateX(-50%);
+      border-radius: 20px;
+    }
+
+    div.res {
+      padding: 10px;
+      text-align: center;
+    }
+
+    .wrapper {
+      padding: 20px;
+      text-align: center;
+      line-height: 2px,
+
+
+    }
+
+    h1 {
+      color: #14075a;
+
+    }
+
+    h3 {
+      background-color: #14075a;
+      color: #f9f9fa;
+      border-radius: 35px;
+      padding: 5px;
+    }
+
+    .big-box2 h1 {
+      text-align: center;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>HEALTH CHECKING SYSTEM</h1>
+  <h1>CHAIR POSTURE MONITOR</h1>
   <div class="container">
     {% for data in schair_data %}
     <div class="wrapper">
-        <div class="box1">
-            <p>Date and Time >{{ data.datetime }} <br>Activity = {{ data.activity }} <br></p>
-            <br><h3>{{ data.status }}</h3>
-        </div>
+      <div class="box1">
+        <p>Date and Time >{{ data.datetime }} <br>Activity = {{ data.activity }} <br></p>
+        <br>
+        <h3>{{ data.status }}</h3>
+      </div>
     </div>
     {% endfor %}
 
     <div class="big-box2">
       <h1>Overall Check</h1>
-     
+
     </div>
 
     <div class="wrapper">
       <div class="box3">
         <p>Date and Time >{{ data.datetime }} <br>Activity = {{ data.activity }} <br></p>
-        <br><h3>{{ data.status }}</h3>
+        <br>
+        <h3>{{ data.status }}</h3>
       </div>
     </div>
-  
+
 
     <div class="wrapper">
-      <div class="top-center-box" >
+      <div class="top-center-box">
         <p>Date and Time >{{ data.datetime }} <br>Activity = {{ data.activity }} <br></p>
-        <br><h3>{{ data.status }}</h3>
+        <br>
+        <h3>{{ data.status }}</h3>
       </div>
     </div>
- 
+
 
   </div>
 </body>
+
 </html>
-
-
-
-
-
-
