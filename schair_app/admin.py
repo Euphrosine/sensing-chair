@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import SchairData, Advice
 
-# Register your models here.
+admin.site.register(SchairData)
+admin.site.register(Advice)
