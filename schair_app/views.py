@@ -24,6 +24,12 @@ def schair_data_api(request):
     return JsonResponse({'message': 'Data received successfully', 'context': {'activity': activity, 'advice': advice}})
 
 
+
 def schair_data_view(request):
-    schair_data = SchairData.objects.all()
-    return render(request, 'schair_app/schair_data_view.html', {'schair_data': schair_data})
+    # Retrieve the latest entry from SchairData
+    latest_entry = SchairData.objects.latest('datetime')
+
+    activity = latest_entry.activity
+    advice = latest_entry.advice
+
+    return render(request, 'schair_app/schair_data_view.html', {'activity': activity, 'advice': advice})
