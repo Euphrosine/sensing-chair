@@ -30,19 +30,18 @@
     <h1>POSITION DETECTION CHAIR SYSTEM</h1>
     <div class="horizontal-box-card">
         <div class="box-card">
-            <h2>Activity</h2>
+            <h2>Status</h2>
             <p id="activity-box"></p>
         </div>
     </div>
 
     <div class="square-box-card box-card">
-        <h2>Advice</h2>
         <p id="advice-box"></p>
     </div>
 
     <script>
         function updateView() {
-            fetch('/schair/schair_data_api/')
+            fetch('/schair_data_api/')
                 .then(response => response.json())
                 .then(data => {
                     const activityBox = document.getElementById('activity-box');
