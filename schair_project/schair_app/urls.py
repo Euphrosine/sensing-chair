@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import SchairDataAPI, schair_data_view
+from . import views
 
 urlpatterns = [
-    path('api/schair_data/', SchairDataAPI.as_view(), name='schair_data_api'),
-    path('schair_data/', schair_data_view, name='schair_data_view'),
+    path('schair_data_api/', views.schair_data_api, name='schair_data_api'),
+    path('schair_data_view/', views.schair_data_view, name='schair_data_view'),
 ]
