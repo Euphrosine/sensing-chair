@@ -24,11 +24,18 @@
             align-items: center;
             justify-content: center;
         }
-    
+        h1{
+            color: darkblue;
+            text-align: center;
+        }
+        .box-card{
+            background-color: #ccc;
+            box-shadow:darkblue 20px;
+        }
     </style>
 </head>
 <body>
-    <h1>POSTURE DETECTION CHAIR SYSTEM</h1>
+    <h1>CHAIR POSTURE DETECTION SYSTEM</h1>
     <div class="horizontal-box-card">
         <div class="box-card">
             <h2>Status</h2>
@@ -57,7 +64,7 @@
         updateView();
 
         // Update every 5 seconds (adjust this as needed)
-        setInterval(updateView);
+        setInterval(updateView,2000);
     </script>
 </body>
 </html>
