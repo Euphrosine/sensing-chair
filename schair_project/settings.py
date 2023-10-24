@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -81,16 +82,9 @@ WSGI_APPLICATION = 'schair_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'A1-gD*4gD1eD5+CF-e36EcC52cfB6DB3',
-        'HOST': 'viaduct.proxy.rlwy.net',
-        'PORT': '51492',
 
-    }
+DATABASES = {
+    'default': dj_database_url.config(default='postgres://sensorprojectdb_user:xMA4UE0Rw8gnSwCX5GAAW4b0ws7UaGVJ@dpg-ckrqdkg5vl2c738b8370-a.oregon-postgres.render.com/sensorprojectdb')
 }
 
 GRAPHENE = {
