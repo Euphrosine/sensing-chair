@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 'corsheaders',
     'rest_framework',
-    'graphene_django',
     'schair_app',
     'crispy_forms',
     'crispy_bootstrap4',
@@ -87,9 +86,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': 'tURfb6x1bG18IDv81iAL',
-        'HOST': 'containers-us-west-116.railway.app',
-        'PORT': '6361',
+        'PASSWORD': 'A1-gD*4gD1eD5+CF-e36EcC52cfB6DB3',
+        'HOST': 'viaduct.proxy.rlwy.net',
+        'PORT': '51492',
 
     }
 }
