@@ -60,31 +60,50 @@
     <h1 style="color: white; text-align: center;">CHAIR POSTURE DETECTION SYSTEM</h1>
     <a href="{% url 'logout' %}" class="btn" style="color: rgb(164, 164, 224);; background-color: white;" type="submit"
       id="header-links" > Logout </a>
-    <div class="container">
+      <div id="update-content" class="container">
         <div class="box-card1">
             <h2 style="color: rgb(164, 164, 224);">Activity</h2>
             <p style="font-size: large ;">{{ activity }}</p>
         </div>
-
+    
         <div class="box-card2">
             <h1 style="color: rgb(164, 164, 224);">Advice</h1><br><br>
             <p style="font-size: 20px;">{{ advice }}</p>
-            <!-- <button id="loadStatusButton">Load Latest Status</button> -->
-
         </div>
     </div>
-</body>
-<!-- <script>
-    document.getElementById('loadStatusButton').addEventListener('click', function () {
-        fetch('http://127.0.0.1:8000/schair_data_api/')
-            .then(response => response.json())
+<!-- Add this in your Django template file -->
+<script>
+    function updateContent() {
+        fetch('{% url 'update_data' %}')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
             .then(data => {
-                const adviceBox = document.querySelector('.box-card2 p');
-                adviceBox.innerHTML = data.context.advice;
+                const contentDiv = document.getElementById('update-content');
+                contentDiv.innerHTML = `
+                    <div class="box-card1">
+                        <h2 style="color: rgb(164, 164, 224);">Activity</h2>
+                        <p style="font-size: large;">${data.activity}</p>
+                    </div>
+
+                    <div class="box-card2">
+                        <h1 style="color: rgb(164, 164, 224);">Advice</h1><br><br>
+                        <p style="font-size: 20px;">${data.advice}</p>
+                    </div>
+                `;
             })
             .catch(error => console.error('Error:', error));
-    });
+    }
 
-</script> -->
+    updateContent();
+
+    setInterval(updateContent, 5000);
+</script>
+
+       
+</body>
 
 </html>

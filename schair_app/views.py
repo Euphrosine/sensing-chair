@@ -44,3 +44,15 @@ def schair_data_view(request):
     advice_text = advice.advice_text
 
     return render(request, 'schair_app/schair_data_view.html', {'activity': activity, 'advice': advice_text})
+
+
+
+def update_data(request):
+    latest_entry = SchairData.objects.latest('datetime')
+    advice = Advice.objects.get(activity=latest_entry)
+
+    activity = latest_entry.activity
+    advice_text = advice.advice_text
+
+    return JsonResponse({'activity': activity, 'advice': advice_text})
+
