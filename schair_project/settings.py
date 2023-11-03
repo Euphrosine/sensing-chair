@@ -76,16 +76,26 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'schair_project.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+# WSGI_APPLICATION = 'schair_project.wsgi.application'
 
 
 DATABASES = {
-    'default': dj_database_url.config(default='postgres://sensorprojectdb_user:xMA4UE0Rw8gnSwCX5GAAW4b0ws7UaGVJ@dpg-ckrqdkg5vl2c738b8370-a.oregon-postgres.render.com/sensorprojectdb')
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'schairproject',
+        'USER': 'admin',
+        'PASSWORD': 'BjBNJNxp',
+        'HOST': 'mysql-153021-0.cloudclusters.net',
+        'PORT': '19256',
+
+    }
 }
+# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+
+
+# DATABASES = {
+#     'default': dj_database_url.config(default='postgres://sensorprojectdb_user:xMA4UE0Rw8gnSwCX5GAAW4b0ws7UaGVJ@dpg-ckrqdkg5vl2c738b8370-a.oregon-postgres.render.com/sensorprojectdb')
+# }
 
 GRAPHENE = {
     'SCHEMA': 'schair_app.schema.schema',  # Path to your schema

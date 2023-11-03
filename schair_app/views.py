@@ -18,9 +18,14 @@ def schair_data_api(request):
         elif status == '3':
             activity = "A person is seated wrongly in the central position of a chair"
             advice_text = "It's not good for your health to sit in this way. Try to maintain a balanced posture."
-        else:
+        elif status == '0':
             activity = "Normal"
             advice_text = "Good job! Your health is in good condition. Keep up the good posture."
+
+        else:
+            activity = ""
+            advice_text = ""
+
 
         schair_data = SchairData.objects.create(datetime=datetime.now(), activity=activity)
         advice = Advice.objects.create(activity=schair_data, advice_text=advice_text)
