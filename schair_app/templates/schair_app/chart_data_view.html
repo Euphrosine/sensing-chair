@@ -1,0 +1,54 @@
+{% extends 'partials/base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h4 id="sensor_data">Table Data</h4>
+    <div class="table-responsive" style="max-height: 200px;overflow-y: auto;">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date and Time</th>
+                    <th>Status</th>
+                    <th>Activity</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in schair_data_with_advice %}
+                    <tr>
+                        <td>{{ data.datetime }}</td>
+                        <td>{{ data.activity }}</td>
+                        <td>{{ data.advice.advice_text }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+<h4>Pie Chart</h4>
+<canvas id="pieChart" width="300" height="300"></canvas>
+
+<script>
+    // Get the counts from the Django context
+    var normalCount = {{ normal_count }};
+    var abnormalCount = {{ abnormal_count }};
+
+    // Create a pie chart
+    var ctx = document.getElementById('pieChart').getContext('2d');
+    var pieChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Normal', 'Abnormal'],
+            datasets: [{
+                data: [normalCount, abnormalCount],
+                backgroundColor: ['rgb(52,58,64)', 'rgb(144, 152, 160)'],
+            }],
+        },
+        options: {
+            responsive: false, // Set responsive to false to control chart size
+        },
+    });
+</script>
+
+</div>
+
+
+{% endblock %}

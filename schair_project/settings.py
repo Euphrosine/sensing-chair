@@ -84,7 +84,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'schairproject',
         'USER': 'admin',
-        'PASSWORD': 'TwpkAyoe',
+        'PASSWORD': 'admin123',
         'HOST': 'mysql-153418-0.cloudclusters.net',
         'PORT': '19069',
 

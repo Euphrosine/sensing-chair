@@ -1,0 +1,77 @@
+{% load static %}
+
+<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+  <div class="sidebar-sticky">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <span style="font-weight: bold; color: #494444; font-size: large;">Dashboard</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="#total_entry" style="font-weight: bolder; color: rgb(46, 23, 133);">
+          <span data-feather="home"></span>
+          <!-- Total Entry -->
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#sensor_data">
+          <span data-feather="shopping-cart"></span>
+          Table and Chart
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#sensor_chart">
+          <span data-feather="users"></span>
+          <!-- Chart -->
+        </a>
+      </li>
+    </ul>
+
+    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+      <span>Reports</span>
+      <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
+        <span data-feather="plus-circle"></span>
+      </a>
+    </h6>
+    <ul class="nav flex-column mb-2">
+      <li class="nav-item">
+        <a class="nav-link" href="#" id="generatePdfReport">
+          Generate pdf Report
+        </a>
+      </li>
+    </ul>
+    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+      <span>Users</span>
+      <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
+        <span data-feather="plus-circle"></span>
+      </a>
+    </h6>
+    <ul class="nav flex-column mb-2">
+      <li class="nav-item">
+        <a class="nav-link" href="logout/">
+          Sign out
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<script>
+  document.getElementById('generatePdfReport').addEventListener('click', function () {
+    // Send a GET request to the Django view
+    fetch('/generate_sensor_data_report/')
+      .then(response => response.blob())
+      .then(blob => {
+        // Create a link to download the PDF
+        const url = window.URL.createObjectURL(new Blob([blob]));
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'sensor_report.pdf'; // Change the filename if needed
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+      })
+      .catch(error => console.error('Error:', error));
+  });
+
+</script>

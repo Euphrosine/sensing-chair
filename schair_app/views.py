@@ -10,22 +10,21 @@ def schair_data_api(request):
 
     if status is not None:
         if status == '1':
-            activity = "A person is bending to the left side of a chair"
-            advice_text = "It's not good for your health to sit in this way. Try to maintain a balanced posture."
+            activity = "Abnormal"
+            advice_text = "A person is bending to the left side of a chair"
         elif status == '2':
-            activity = "A person is bending to the right side of a chair"
-            advice_text = "It's not good for your health to sit in this way. Try to maintain a balanced posture."
+            activity = "Abnormal"
+            advice_text = "A person is bending to the right side of a chair"
         elif status == '3':
-            activity = "A person is seated wrongly in the central position of a chair"
-            advice_text = "It's not good for your health to sit in this way. Try to maintain a balanced posture."
+            activity = "Abnormal"
+            advice_text = "A person is seated wrongly in the central position of a chair."
         elif status == '0':
             activity = "Normal"
-            advice_text = "Good job! Your health is in good condition. Keep up the good posture."
+            advice_text = "A person is seated in the good posture."
 
         else:
             activity = ""
             advice_text = ""
-
 
         schair_data = SchairData.objects.create(datetime=datetime.now(), activity=activity)
         advice = Advice.objects.create(activity=schair_data, advice_text=advice_text)
@@ -56,3 +55,21 @@ def update_data(request):
 
     return JsonResponse({'activity': activity, 'advice': advice_text})
 
+# dashboard
+from django.db.models import Count
+from django.shortcuts import render
+from .models import SchairData, Advice
+
+def dashboard_data(request):
+    schair_data_with_advice = SchairData.objects.select_related('advice').all()
+
+    # Calculate the count of normal and abnormal activities
+    normal_count = SchairData.objects.filter(activity='Normal').count()
+    abnormal_count = SchairData.objects.exclude(activity='Normal').count()
+
+    context = {
+        'schair_data_with_advice': schair_data_with_advice,
+        'normal_count': normal_count,
+        'abnormal_count': abnormal_count,
+    }
+    return render(request, 'schair_app/chart_data_view.html', context)

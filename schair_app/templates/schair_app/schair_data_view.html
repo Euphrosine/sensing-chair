@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +15,7 @@
     <title>Schair Data View</title>
     <style>
         body {
-            background-color: rgb(164, 164, 224);
+            background-color: rgb(111, 112, 116);
 
             .container {
                 text-align: center;
@@ -23,32 +24,42 @@
             }
 
             .box-card1 {
-                border: 1px solid #ccc;
+                border: 3px solid #ccc;
                 background-color: white;
-                padding: 5px;
-                margin: 10px;
+                padding: 10px;
+                /* margin: 10px; */
                 border-radius: 10px;
-                width: 500px;
-                display: inline-block;
-                /* Keep the boxes on separate lines */
+                /* width: 500px; */
+                margin: auto;
+                margin-bottom: 50px;
+                width: 50%;
+
             }
 
             .box-card2 {
-                border: 2px solid #ccc;
+                border: 3px solid #ccc;
                 background-color: white;
-                padding: 20px;
-                /* Increased padding */
-                margin: 10px;
-                border-radius: 10px;
-                width: 400px;
-                height: 400px;
-                display: inline-block;
-                /* Keep the boxes on separate lines */
+                width: 50%;
+                padding: 10px;
+                margin: auto;
+                
             }
-
+            .button{
+                background-color: rgb(45, 50, 54);
+                padding: 15px 32px;
+                color: white;
+                text-align: center;
+                width: 25%;
+                padding: 10px;
+                margin: 50px 500px;
+                border-radius: 30%;
+            }
+            .button:hover {
+                box-shadow: 0 12px 16px 0 rgb(45, 50, 54),0 17px 50px 0 rgb(45, 50, 54);
+            }
             h1,
             h2 {
-                color: rgb(164, 164, 224);
+                color: rgb(52,58,64);
                 text-align: center;
             }
         }
@@ -57,20 +68,31 @@
 </head>
 
 <body>
-    <h1 style="color: white; text-align: center;">CHAIR POSTURE DETECTION SYSTEM</h1>
-    <a href="{% url 'logout' %}" class="btn" style="color: rgb(164, 164, 224);; background-color: white;" type="submit"
-      id="header-links" > Logout </a>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow" >
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" style="color: white; font-family: 'Roboto', sans-serif; font-weight: 700;">CPDSystem</a>
+        <input class="form-control form-control-primary w-100 text-center font-weight-bold" type="text" value="Smart Chair Posture Detection System" style="background-color: white;" readonly>
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="dashboard_data/" style="font-weight: bold;">Dashboard</a>
+            </li>
+        </ul>
+    </nav>
+       <br><br>
+      <br>
       <div id="update-content" class="container">
         <div class="box-card1">
-            <h2 style="color: rgb(164, 164, 224);">Activity</h2>
+            <h2 style="color: rgb(52,58,64);">Status</h2>
             <p style="font-size: large ;">{{ activity }}</p>
         </div>
     
         <div class="box-card2">
-            <h1 style="color: rgb(164, 164, 224);">Advice</h1><br><br>
+            <h1 style="color: rgb(52,58,64);">Activity</h1><br><br>
             <p style="font-size: 20px;">{{ advice }}</p>
         </div>
-    </div>
+       </div>
+        <div>
+            <button class="button">Move to Main Dashboard</button>
+        </div>
 <!-- Add this in your Django template file -->
 <script>
     function updateContent() {
@@ -85,12 +107,12 @@
                 const contentDiv = document.getElementById('update-content');
                 contentDiv.innerHTML = `
                     <div class="box-card1">
-                        <h2 style="color: rgb(164, 164, 224);">Activity</h2>
+                        <h2 style="color: rgb(52,58,64);">Status</h2>
                         <p style="font-size: large;">${data.activity}</p>
                     </div>
 
                     <div class="box-card2">
-                        <h1 style="color: rgb(164, 164, 224);">Advice</h1><br><br>
+                        <h1 style="color: rgb(52,58,64);">Activity</h1><br><br>
                         <p style="font-size: 20px;">${data.advice}</p>
                     </div>
                 `;
