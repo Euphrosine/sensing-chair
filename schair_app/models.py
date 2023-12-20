@@ -8,10 +8,17 @@ class SchairData(models.Model):
         return self.activity
 
 class Advice(models.Model):
-    activity = models.OneToOneField('SchairData', on_delete=models.CASCADE)
+    schair_data = models.OneToOneField(SchairData, on_delete=models.CASCADE, primary_key=True)
     advice_text = models.TextField()
 
     def __str__(self):
-        return self.activity.activity
+        return self.schair_data.activity
 
+#ml model
 
+class PostureData(models.Model):
+    timestamp = models.DateTimeField(auto_now_add=True)
+    posture_status = models.IntegerField()
+
+    def __str__(self):
+        return f"PostureData - {self.timestamp}"

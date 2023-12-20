@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centered Alert</title>
+  <style>
+    /* Styles for the overlay/modal */
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      text-align: center;
+    }
+  </style>
+  <script>
+    function showAlert() {
+      // Show the overlay/modal
+      var overlay = document.querySelector('.overlay');
+      overlay.style.display = 'flex';
+
+      // Display the alert message
+      var confirmationMessage = 'Are you sure you want to leave? Your changes may not be saved.';
+      document.getElementById('modal-message').textContent = confirmationMessage;
+    }
+
+    function closeAlert() {
+      // Hide the overlay/modal
+      var overlay = document.querySelector('.overlay');
+      overlay.style.display = 'none';
+    }
+  </script>
+</head>
+<body>
+  <!-- Your page content goes here -->
+  <h1>Hello, this is your page content!</h1>
+
+  <!-- Button to trigger the alert -->
+  <button onclick="showAlert()">Show Alert</button>
+
+  <!-- Overlay/Modal for displaying the alert -->
+  <div class="overlay" onclick="closeAlert()">
+    <div class="modal" onclick="event.stopPropagation()">
+      <p id="modal-message"></p>
+      <button onclick="closeAlert()">OK</button>
+    </div>
+  </div>
+</body>
+</html>

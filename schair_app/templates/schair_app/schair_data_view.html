@@ -94,6 +94,7 @@
             <a href="dashboard_data/"><button class="button">Move to Main Dashboard</button></a>
         </div>
 <!-- Add this in your Django template file -->
+<!-- Add this in your Django template file -->
 <script>
     function updateContent() {
         fetch('{% url 'update_data' %}')
@@ -105,25 +106,63 @@
             })
             .then(data => {
                 const contentDiv = document.getElementById('update-content');
-                contentDiv.innerHTML = `
-                    <div class="box-card1">
-                        <h2 style="color: rgb(52,58,64);">Status</h2>
-                        <p style="font-size: large;">${data.activity}</p>
-                    </div>
+                let contentHTML = '';
 
-                    <div class="box-card2">
-                        <h1 style="color: rgb(52,58,64);">Activity</h1><br><br>
-                        <p style="font-size: 20px;">${data.advice}</p>
-                    </div>
-                `;
+                // Check if there are at least four entries
+                if (data.entries.length >= 4) {
+                    // If there are four entries, display prediction and recommendation
+                    contentHTML = `
+                        <div class="box-card1">
+                            <h2 style="color: rgb(52,58,64);">Predicted Posture</h2>
+                            <p style="font-size: large;">${data.prediction}</p>
+                        </div>
+                        <div class="box-card2">
+                            <h1 style="color: rgb(52,58,64);">Recommendation</h1><br><br>
+                            <p style="font-size: 20px;">${data.recommendation}</p>
+                        </div>
+                    `;
+                } else {
+                    // If there are less than four entries, display status and activity
+                    const lastEntry = data.entries.length > 0 ? data.entries[data.entries.length - 1] : null;
+                    const status = lastEntry ? lastEntry.status : '';
+                    const activity = lastEntry ? getActivityMessage(status) : '';
+
+                    contentHTML = `
+                        <div class="box-card1">
+                            <h2 style="color: rgb(52,58,64);">Status</h2>
+                            <p style="font-size: large;">${status}</p>
+                        </div>
+                        <div class="box-card2">
+                            <h1 style="color: rgb(52,58,64);">Activity</h1><br><br>
+                            <p style="font-size: 20px;">${activity}</p>
+                        </div>
+                    `;
+                }
+
+                contentDiv.innerHTML = contentHTML;
             })
             .catch(error => console.error('Error:', error));
+    }
+
+    // Function to get activity message based on status
+    function getActivityMessage(status) {
+        // Customize the messages based on your requirements
+        switch (status) {
+            case '1':
+                return 'Message for status 1';
+            case '2':
+                return 'Message for status 2';
+            // Add cases for other statuses
+            default:
+                return 'Default message';
+        }
     }
 
     updateContent();
 
     setInterval(updateContent, 5000);
 </script>
+
 
        
 </body>

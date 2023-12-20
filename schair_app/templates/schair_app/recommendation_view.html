@@ -1,0 +1,30 @@
+<!-- recommendation_view.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Add any necessary styles or scripts for your view -->
+    <title>Recommendation View</title>
+    <style>
+        /* Add your custom styles for the recommendation message box */
+        /* For example: */
+        .recommendation-box {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 10px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<!-- popup_template.html -->
+<div class="popup" id="recommendationPopup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 20px; background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; border-radius: 5px; z-index: 9999;">
+    <h2 style="margin-bottom: 10px;">Machine Learning Prediction</h2>
+    <p id="mlPredictionText">{{ machine_learning_prediction }}</p>
+    <h2 style="margin-top: 20px; margin-bottom: 10px;">Recommendation</h2>
+    <p id="recommendationText">He</p>
+    <button onclick="closePopup()" style="margin-top: 20px; background-color: #d9534f; border: none; color: #fff; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Close</button>
+</div>
+</body>
+</html>

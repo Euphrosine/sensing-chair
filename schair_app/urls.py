@@ -9,5 +9,8 @@ urlpatterns = [
     path('update-data/', views.update_data, name='update_data'),
     path('accounts/login/',auth_views.LoginView.as_view(template_name='schair_app/login.html'),name='login'),
     path('dashboard_data/logout/',auth_views.LogoutView.as_view(template_name='schair_app/logout.html'),name='logout'),
-
+    
+    # ml urls
+    path('predict_posture/', views.predict_posture, name='predict_posture'),
+    path('popup/', views.popup, name='popup'),
 ]
