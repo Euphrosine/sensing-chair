@@ -82,15 +82,16 @@
 <div id="update-content" class="container">
     <div class="box-card1">
         <h2 style="color: rgb(52,58,64);">Status</h2>
-        <p style="font-size: large ;">{{ activity }}</p>
-    </div>
+<div>
+    {% with advice_text=advice.advice_text %}
+        {% if advice_text %}
+            <p style="font-size: large;">{{ advice_text }}</p>
+        {% else %}
+            <p style="font-size: large;">{{ activity }}</p>
+        {% endif %}
+    {% endwith %}
+</div>
 
-    {% if advice %}
-        <div class="box-card2">
-            <h1 style="color: rgb(52,58,64);">Activity</h1><br><br>
-            <p style="font-size: 20px;">{{ advice }}</p>
-        </div>
-    {% endif %}
 </div>
 
 <div>
