@@ -79,20 +79,24 @@
     </nav>
        <br><br>
       <br>
-      <div id="update-content" class="container">
-        <div class="box-card1">
-            <h2 style="color: rgb(52,58,64);">Status</h2>
-            <p style="font-size: large ;">{{ activity }}</p>
-        </div>
-    
+<div id="update-content" class="container">
+    <div class="box-card1">
+        <h2 style="color: rgb(52,58,64);">Status</h2>
+        <p style="font-size: large ;">{{ activity }}</p>
+    </div>
+
+    {% if advice %}
         <div class="box-card2">
             <h1 style="color: rgb(52,58,64);">Activity</h1><br><br>
             <p style="font-size: 20px;">{{ advice }}</p>
         </div>
-       </div>
-        <div>
-            <a href="dashboard_data/"><button class="button">Move to Main Dashboard</button></a>
-        </div>
+    {% endif %}
+</div>
+
+<div>
+    <a href="dashboard_data/"><button class="button">Move to Main Dashboard</button></a>
+</div>
+
 <!-- Add this in your Django template file -->
 <!-- Add this in your Django template file -->
 <script>
